@@ -90,8 +90,10 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
         //
+        Usuario::destroy($id);
+        return redirect('usuarios');
     }
 }

@@ -19,7 +19,15 @@ Pagina de index
             <td>{{$usuario->Apellidos}}</td>
             <td>{{$usuario->Email}}</td>
             
-            <td>Editar | Borrar</td>
+            <td>Editar | 
+
+            <form action="{{ url('/usuarios/'.$usuario->id) }}" method="post">
+                @csrf 
+                {{ method_field('DELETE') }}
+                <input type="submit" onclick="return confirm('¿Seguro de eliminar el registro?')"
+                value="Borrar">
+            </form>
+            </td>
         </tr>
         @endforeach
     </tbody>
