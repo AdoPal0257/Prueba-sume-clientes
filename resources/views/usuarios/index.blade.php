@@ -19,7 +19,14 @@ Pagina de index
             <td>{{$usuario->Apellidos}}</td>
             <td>{{$usuario->Email}}</td>
             
-            <td>Editar | 
+            <td>
+
+            <a href="{{ url('/usuarios/'.$usuario->id.'/edit') }}">
+                Editar
+            </a>
+                
+            
+            | 
 
             <form action="{{ url('/usuarios/'.$usuario->id) }}" method="post">
                 @csrf 
