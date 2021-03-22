@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -93,7 +95,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../usuarios" class="nav-link">
               <i class="far fa-user nav-icon"></i>
               <p>Usuarios</p>
             </a>
@@ -195,6 +197,20 @@
 
       <div class="row">
           <div class="col-md-12">
+
+
+@if(Session::has('message'))
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-primary" role="alert">
+    {{Session::get('message')}}
+    </div>
+  </div>
+</div>
+    
+@endif
+
           <div class="card">
             <div class="card-body">
               <form action="{{url('/usuarios/'.$usuario->id)}}" method="post" enctype="multipart/form-data">

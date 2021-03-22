@@ -18,7 +18,7 @@
                             <table id="usuarios" class="table table-striped table-bordered" style="width:100%">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>#</th>
+                                    <th>Codigo</th>
                                     <th>Foto</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>

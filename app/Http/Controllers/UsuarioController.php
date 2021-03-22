@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+Use Session;
+Use Redirect;
 
 class UsuarioController extends Controller
 {
@@ -98,6 +100,7 @@ class UsuarioController extends Controller
 
         Usuario::where('id','=',$id)->update($datosUsuarios);
         $usuario=Usuario::findOrFail($id);
+        Session::flash('message','Usuario editado');
         return view('usuarios.edit',compact('usuario'));
     }
 
