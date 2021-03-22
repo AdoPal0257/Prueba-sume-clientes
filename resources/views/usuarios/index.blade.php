@@ -31,7 +31,8 @@
                                 <tr>
                                     <td>{{$usuario->id}}</td>
                                     <td>
-                                        <img src="{{ asset('storage').'/'.$usuario->Foto}}" width="100" alt="">
+                                        <!-- <img src="{{ asset('storage').'/'.$usuario->Foto}}" width="100" alt=""> -->
+                                        <img src="{{ asset('../../../storage/app/public').'/'.$usuario->Foto}}" width="100" alt="">
                                     </td>
                                     <td>{{$usuario->Nombre}}</td>
                                     <td>{{$usuario->Apellidos}}</td>
