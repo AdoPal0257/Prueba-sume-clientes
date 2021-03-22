@@ -1,7 +1,6 @@
-crear empleado
 
 <form action="{{ url('/usuarios') }}" method="post" enctype="multipart/form-data">
 @csrf
-@include('usuarios.form');
+@include('usuarios.form',['modo'=>'Guardar']);
 
 </form>

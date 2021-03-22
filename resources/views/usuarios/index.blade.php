@@ -1,4 +1,8 @@
-Pagina de index
+@if(Session::has('mensaje'))
+{{Session::get('mensaje')}}
+@endif
+
+<a href="{{url('usuarios/create')}}">Nuevo Usuario</a>
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -14,7 +18,9 @@ Pagina de index
         @Foreach($usuarios as $usuario)
         <tr>
             <td>{{$usuario->id}}</td>
-            <td>{{$usuario->Foto}}</td>
+            <td>
+                <img src="{{ asset('storage').'/'.$usuario->Foto}}" width="100" alt="">
+            </td>
             <td>{{$usuario->Nombre}}</td>
             <td>{{$usuario->Apellidos}}</td>
             <td>{{$usuario->Email}}</td>

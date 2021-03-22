@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsuarioController extends Controller
 {
@@ -47,7 +48,8 @@ class UsuarioController extends Controller
         }
 
         Usuario::insert($datosUsuarios);
-        return response()->json($datosUsuarios);
+       // return response()->json($datosUsuarios);
+       return redirect('usuarios')->with('mensaje','Usuario agregado exitosamente');
     }
 
     /**
@@ -84,9 +86,17 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $datosUsuarios = request()->except('_token','_method');
-        Usuario::where('id','=',$id)->update($datosUsuarios);
+        $datosUsuarios = request()->except(['_token','_method']);
 
+        if($request->hasFile('Foto')){
+            $usuario=Usuario::findOrFail($id);
+
+            Storage::delete('public/'.$usuario->Foto);
+
+            $datosUsuarios['Foto']=$request->file('Foto')->store('uploads','public');
+        }
+
+        Usuario::where('id','=',$id)->update($datosUsuarios);
         $usuario=Usuario::findOrFail($id);
         return view('usuarios.edit',compact('usuario'));
     }
@@ -100,7 +110,13 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
-        Usuario::destroy($id);
-        return redirect('usuarios');
+
+        $usuario=Usuario::findOrFail($id);
+
+        if(Storage::delete('public/'.$usuario->Foto)){
+            Usuario::destroy($id);
+        }
+        
+        return redirect('usuarios')->with('mensaje','Usuario borrado');
     }
 }
