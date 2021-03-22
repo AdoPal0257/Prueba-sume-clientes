@@ -15,6 +15,7 @@ class UsuarioController extends Controller
     public function index()
     {
         //
+        return view('usuarios.index');
     }
 
     /**
@@ -37,6 +38,9 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //
+        $datosUsuarios = request()->except('_token');
+        Usuario::insert($datosUsuarios);
+        return response()->json($datosUsuarios);
     }
 
     /**
