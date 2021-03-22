@@ -14,6 +14,9 @@ crear empleado
     <label for="Clave"> Clave </label>
     <input type="password" name="Clave" id="Clave">
 
+    <label for="Foto"> Foto </label>
+    <input type="file" name="Foto" id="Foto">
+
     <input type="submit" value="Guardar datos">
 
 </form>

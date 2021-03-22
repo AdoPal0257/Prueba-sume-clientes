@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('Apellidos');
             $table->string('Email');
             $table->string('Clave');
+            $table->string('Foto') -> nullable();
 
             $table->timestamps();
         });

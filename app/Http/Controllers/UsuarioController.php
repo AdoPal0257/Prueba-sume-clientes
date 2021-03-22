@@ -39,6 +39,12 @@ class UsuarioController extends Controller
     {
         //
         $datosUsuarios = request()->except('_token');
+
+
+        if($request->hasFile('Foto')){
+            $datosUsuarios['Foto']=$request->file('Foto')->store('uploads','public');
+        }
+
         Usuario::insert($datosUsuarios);
         return response()->json($datosUsuarios);
     }
